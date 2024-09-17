@@ -11,4 +11,13 @@ func main() {
 
 	createTiome := time.Date(2020, time.April, 10, 20, 33, 3, 9, time.Local)
 	fmt.Printf(createTiome.String())
+
+	dur := time.Duration(10000000000)
+	fmt.Println(dur.Minutes(), "hello")
+
+	str, err := time.ParseDuration("15h10m")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(str.Hours())
 }
