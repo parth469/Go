@@ -20,4 +20,15 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(str.Hours())
+
+	cr := time.Date(1034, time.April, 2524572345723894759, 2, 3, 5, 0, time.Local)
+	fmt.Println(cr)
+
+	start := time.Now()
+	a := 1
+	for i := 0; i < 19994745; i++ {
+		a++
+	}
+	el := time.Since(start)
+	fmt.Println(el)
 }
