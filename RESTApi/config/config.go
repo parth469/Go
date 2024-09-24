@@ -8,8 +8,9 @@ import (
 )
 
 type Config struct {
-	AppName string
-	Port    string
+	AppName  string
+	Port     string
+	Database string
 }
 
 func LoadConfig() (*Config, error) {
@@ -19,11 +20,12 @@ func LoadConfig() (*Config, error) {
 	}
 
 	config := &Config{
-		AppName: os.Getenv("APP_NAME"),
-		Port:    os.Getenv("PORT"),
+		AppName:  os.Getenv("APP_NAME"),
+		Port:     os.Getenv("PORT"),
+		Database: os.Getenv("DATABASE"),
 	}
 
-	if config.AppName == "" || config.Port == "" {
+	if config.AppName == "" || config.Port == "" || config.Database == "" {
 		return nil, errors.New("required environment variables missing")
 	}
 
