@@ -15,3 +15,11 @@ type UserCreateInput struct {
 	Password    string `json:"password" validate:"required,min=6,max=8"`
 	Email       string `json:"email" validate:"required,email"`
 }
+
+type UserUpdateInput struct {
+	Name        string `json:"name" validate:"min=3,max=32"`
+	PhoneNumber string `json:"phoneNumber" validate:"min=10,max=10"`
+	Password    string `json:"password" validate:"min=6,max=8"`
+	Email       string `json:"email" validate:"email"`
+	Status      bool   `json:"status" validate:"boolean"`
+}

@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/parth469/models"
@@ -34,16 +35,43 @@ func CreateUser(c fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid JSON"})
 	}
 
-	if err := validate.Struct(user); err != nil {
+	if err := validate.Struct(&user); err != nil {
 		formattedErrors := formatValidationErrors(err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"errors": formattedErrors})
 	}
-	service.CreateUser(user)
-	return nil
+
+	error := service.CreateUser(user)
+
+	if error != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"errors": error.Error()})
+	}
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Successfully Create New User"})
 }
 
 func UpdateUser(c fiber.Ctx) error {
-	return nil
+	body := c.Body()
+
+	var userUpdate models.UserUpdateInput
+
+	if len(body) == 0 {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Body Is Missing"})
+	}
+
+	if err := json.Unmarshal(body, &userUpdate); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid Json"})
+	}
+
+	if err := validate.Struct(&userUpdate); err != nil {
+		formattedErrors := formatValidationErrors(err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"errors": formattedErrors})
+
+	}
+	fmt.Println(userUpdate)
+	// if updateError := service.UpdateUser(&userUpdate); updateError != nil {
+	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"errors": updateError.Error()})
+	// }
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "User updated successfully"})
 
 }
 
