@@ -2,18 +2,14 @@ package main
 
 import "fmt"
 
-func main() {
-	p1 := Person{age: 12, Name: "Nage"}
-	p2 := &p1
-	p1.getDetail("new Name")
-	fmt.Println(p1, p2)
-}
+func maidns() {
 
-type Person struct {
-	Name string
-	age  int
-}
+	type Person struct {
+		Name string
+		age  int
+	}
 
-func (P *Person) getDetail(s string) {
-	P.Name = s
+	p1 := &Person{"parth", 23}
+	p2 := p1
+	fmt.Printf("%p type is and Person Type is %p", p1, p2)
 }
