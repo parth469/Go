@@ -1,1 +1,0 @@
-All .go files present in the same directory will belong to the same package
