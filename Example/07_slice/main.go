@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main() {
 	// Create a slice of integers with length 6, all initialized to 0
@@ -36,4 +39,12 @@ func main() {
 	fmt.Println("sliceD[2]:", sliceD[2])
 	fmt.Println("sliceStr[0]:", sliceStr[0])
 	fmt.Println("sliceBool[0]:", sliceBool[0])
+	sl := []int{1, 2, 3, 4, 5, 6, 7}
+	app(sl[1:3])
+	fmt.Println(sl)
+}
+func app(sl []int) {
+	sl = append(sl, 0)
+	slices.Delete(sl, 1, 2)
+	fmt.Println(sl)
 }
