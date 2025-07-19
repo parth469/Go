@@ -21,8 +21,8 @@ func appendSlice(s []int) {
 
 // 4. Append in-place: Only reflects if capacity not exceeded
 func appendInPlace(s []int) {
-	s[0] = 77           // modify
-	s = append(s, 88)   // might or might not reflect outside
+	s[0] = 77         // modify
+	s = append(s, 88) // might or might not reflect outside
 	fmt.Println("Inside appendInPlace:", s)
 }
 
@@ -40,7 +40,7 @@ func main() {
 
 	// 2. Reslice
 	reslice(sl1)
-	fmt.Println("After reslice:", sl1)    // ❌ [1 2 3] (unchanged)
+	fmt.Println("After reslice:", sl1) // ❌ [1 2 3] (unchanged)
 
 	// 3. Append (new array)
 	appendSlice(sl2)
