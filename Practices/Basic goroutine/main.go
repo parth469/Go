@@ -6,24 +6,32 @@ import (
 	"time"
 )
 
-func PrintFrom1To5(number string, wg *sync.WaitGroup) {
-	defer wg.Done()
-	for i := 1; i < 6; i++ {
-		time.Sleep(200 * time.Millisecond)
-		fmt.Println(number, i)
-	}
-}
+var counter int = 9
+var lock sync.RWMutex
+
 func main() {
-	fmt.Println("START")
-
 	wg := sync.WaitGroup{}
-	wg.Add(3)
+	hello := func(wg *sync.WaitGroup, i int) {
+		defer wg.Done()
+		fmt.Println("hello for", i)
+		lock.Lock()
+		if i%2 == 0 {
+			counter += 1
+		}
+		time.Sleep(2 * time.Millisecond)
+		fmt.Println(counter, "i", i)
+		lock.Unlock()
+	}
 
-	go PrintFrom1To5("first", &wg)
-	go PrintFrom1To5("second", &wg)
-	go PrintFrom1To5("Three", &wg)
+	numberOFloop := 5
+
+	wg.Add(numberOFloop)
+	i := 0
+	for i < numberOFloop {
+		i++
+		go hello(&wg, i)
+	}
 
 	wg.Wait()
-
-	fmt.Println("DONE")
+	fmt.Println(counter)
 }
