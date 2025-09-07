@@ -1,0 +1,13 @@
+{"Time":"2025-09-07T16:49:50.3999522+05:30","Action":"start","Package":"github.com/parth469/test"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"run","Package":"github.com/parth469/test","Test":"TestHello"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Test":"TestHello","Output":"=== RUN   TestHello\n"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Test":"TestHello","Output":"--- PASS: TestHello (0.00s)\n"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"pass","Package":"github.com/parth469/test","Test":"TestHello","Elapsed":0}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"run","Package":"github.com/parth469/test","Test":"TestHelloFail"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Test":"TestHelloFail","Output":"=== RUN   TestHelloFail\n"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Test":"TestHelloFail","Output":"    hello_test.go:16: TestHelloFail: verifying SayHello does not return an incorrect greeting\n"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Test":"TestHelloFail","Output":"--- PASS: TestHelloFail (0.00s)\n"}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"pass","Package":"github.com/parth469/test","Test":"TestHelloFail","Elapsed":0}
+{"Time":"2025-09-07T16:49:51.1053218+05:30","Action":"output","Package":"github.com/parth469/test","Output":"PASS\n"}
+{"Time":"2025-09-07T16:49:51.1104845+05:30","Action":"output","Package":"github.com/parth469/test","Output":"ok  \tgithub.com/parth469/test\t0.709s\n"}
+{"Time":"2025-09-07T16:49:51.1141358+05:30","Action":"pass","Package":"github.com/parth469/test","Elapsed":0.714}
